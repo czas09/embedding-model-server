@@ -21,7 +21,7 @@ from pydantic import BaseModel, Field
 
 class ModelCard(BaseModel):
     id: str
-    object: str = "embedding model"
+    object: str = "embedding"
     created: int = Field(default_factory=lambda: int(time.time()))
     owned_by: str = "czas09"
     root: Optional[str] = None

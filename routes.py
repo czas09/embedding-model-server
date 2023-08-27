@@ -2,6 +2,7 @@ import base64
 
 import numpy as np
 from fastapi import APIRouter
+from loguru import logger
 
 from models import EMBEDDING_MODEL
 from config import (
@@ -19,11 +20,15 @@ from protocol import (
 )
 
 
+logger.add("./service.log", level='INFO')
+
 model_router = APIRouter()
 embedding_router = APIRouter()
 
 @model_router.get("/models")
 async def show_available_models() -> ModelList: 
+    logger.info("当前模型服务：")
+    logger.info("    {}".format(EMBED_MODEL_NAME))
     return ModelList(data=[ModelCard(id=EMBED_MODEL_NAME, root=EMBED_MODEL_NAME)])
 
 
@@ -45,6 +50,10 @@ async def create_embeddings(request: EmbeddingsRequest, model_name: str = None) 
 
     for num_batch, batch in enumerate(batches):
         token_num = sum([len(i) for i in batch])
+
+        logger.info("当前处理批次中的文本：")
+        for text in batch: 
+            logger.info("    {}".format(text))
         embeds = EMBEDDING_MODEL.encode(batch, normalize_embeddings=True)
 
         batch_size, embed_dim = embeds.shape
