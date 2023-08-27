@@ -21,9 +21,9 @@ from pydantic import BaseModel, Field
 
 class ModelCard(BaseModel):
     id: str
-    object: str = "model"
+    object: str = "embedding model"
     created: int = Field(default_factory=lambda: int(time.time()))
-    owned_by: str = "fhxk-iao"
+    owned_by: str = "czas09"
     root: Optional[str] = None
     parent: Optional[str] = None
     # permission: List[ModelPermission] = []

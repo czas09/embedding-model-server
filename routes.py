@@ -24,7 +24,7 @@ embedding_router = APIRouter()
 
 @model_router.get("/models")
 async def show_available_models() -> ModelList: 
-    return ModelList(data=[ModelCard(id=EMBED_MODEL_NAME, root=EMBED_MODEL_NAME, )])
+    return ModelList(data=[ModelCard(id=EMBED_MODEL_NAME, root=EMBED_MODEL_NAME)])
 
 
 @embedding_router.post("/embeddings")

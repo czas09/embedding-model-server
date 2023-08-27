@@ -4,7 +4,6 @@ import configparser
 configs = configparser.ConfigParser()
 configs.read("./configs.ini", encoding='utf-8')
 
-
 # ==============================================================================
 # 服务配置选项
 # ==============================================================================
@@ -12,7 +11,6 @@ SERVICE_HOST = configs.get("SERVICE", "host")
 SERVICE_PORT = configs.getint("SERVICE", "port")
 API_PREFIX = configs.get("SERVICE", "prefix")
 EMBEDDING_ROUTE = configs.get("SERVICE", "embedding_route")
-
 
 # ==============================================================================
 # 模型配置选项

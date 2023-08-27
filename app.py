@@ -21,7 +21,6 @@ app.include_router(model_router, prefix=API_PREFIX, tags=["Model"])
 app.include_router(embedding_router, prefix=API_PREFIX, tags=["Embedding"])
 
 
-
 if __name__ == '__main__': 
     import uvicorn
     
